@@ -1,6 +1,9 @@
 #include "conversion_utils.h"
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
+#include <stdio.h>
 
 /*
 This function will use the tens and ones digits of the inputted number to get the appropriate name within the first_digit and second_digit
@@ -28,5 +31,33 @@ char* convert_int_to_name(int num)
   }
   
   return result;
+}
+
+int* convert_str_to_num(char* str, int* index_p)
+{
+  int* num = (int*) malloc(sizeof(int));
+  
+  if (num == NULL)
+    return NULL;
+ 
+  *num = 0; 
+  
+  /*Signify the reaching of the end of the string by returning a num equal to -1*/
+  if (str[*index_p] == '\0')
+    *num = -1;
+  
+  /*Advance the pointer past all of the whitespaces*/
+  while (str[*index_p] == ' ')
+    *index_p = *index_p + 1;
+  
+  /*Parse the number from the string*/ 
+  while (isdigit(str[*index_p]))
+  {
+    *num = *num * 10;
+    *num = *num + (str[*index_p] - '0');
+    *index_p = *index_p + 1;
+  }
+  
+  return num;
 }
 
