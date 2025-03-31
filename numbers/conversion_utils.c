@@ -42,13 +42,13 @@ int* convert_str_to_num(char* str, int* index_p)
  
   *num = 0; 
   
-  /*Signify the reaching of the end of the string by returning a num equal to -1*/
-  if (str[*index_p] == '\0')
-    *num = -1;
-  
   /*Advance the pointer past all of the whitespaces*/
   while (str[*index_p] == ' ' || str[*index_p] == '\t' || str[*index_p] == '\n')
     *index_p = *index_p + 1;
+
+  /*Signify the reaching of the end of the string by returning a num equal to -1*/
+  if (str[*index_p] == '\0')
+    *num = -1;
   
   /*Parse the number from the string*/ 
   while (isdigit(str[*index_p]))

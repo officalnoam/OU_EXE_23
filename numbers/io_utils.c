@@ -55,7 +55,7 @@ void output_nums(char* user_input, FILE* output_stream)
   int* num;
   int i = 0;
   char* name;
-  
+ 
   num = convert_str_to_num(user_input, &i);
   while (*num != -1)
   {
