@@ -47,7 +47,7 @@ int* convert_str_to_num(char* str, int* index_p)
     *num = -1;
   
   /*Advance the pointer past all of the whitespaces*/
-  while (str[*index_p] == ' ')
+  while (str[*index_p] == ' ' || str[*index_p] == '\t' || str[*index_p] == '\n')
     *index_p = *index_p + 1;
   
   /*Parse the number from the string*/ 
